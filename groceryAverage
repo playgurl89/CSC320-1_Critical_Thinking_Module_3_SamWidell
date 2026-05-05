@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class groceryAverage {
+    public static void main(String[] args) {
+        Scanner scnr = new Scanner(System.in);
+
+        // Prompt for coupon
+        System.out.print("Enter coupon amount (as decimal): ");
+        double coupon = scnr.nextDouble();
+
+        // Validate coupon
+        if (coupon > 1 || coupon <= 0) {
+            coupon = 0.10;
+            System.out.println("Invalid coupon. Defaulting to 10%.");
+        }
+
+        // Input weekly grocery bills
+        double week1, week2, week3, week4;
+
+        System.out.print("Enter week 1 grocery bill: ");
+        week1 = scnr.nextDouble();
+
+        System.out.print("Enter week 2 grocery bill: ");
+        week2 = scnr.nextDouble();
+
+        System.out.print("Enter week 3 grocery bill: ");
+        week3 = scnr.nextDouble();
+
+        System.out.print("Enter week 4 grocery bill: ");
+        week4 = scnr.nextDouble();
+
+        // Calculations without coupon
+        double monthlyTotal = week1 + week2 + week3 + week4;
+        double weeklyAverage = monthlyTotal / 4;
+
+        // Apply coupon
+        double discountTotal = monthlyTotal * (1 - coupon);
+        double discountWeeklyAvg = discountTotal / 4;
+
+        // Output results
+        System.out.println("\n--- Without Coupon ---");
+        System.out.printf("Monthly Total: $%.2f\n", monthlyTotal);
+        System.out.printf("Weekly Average: $%.2f\n", weeklyAverage);
+
+        System.out.println("\n--- With Coupon ---");
+        System.out.printf("Monthly Total: $%.2f\n", discountTotal);
+        System.out.printf("Weekly Average: $%.2f\n", discountWeeklyAvg);
+
+        scnr.close();
+    }
+}
